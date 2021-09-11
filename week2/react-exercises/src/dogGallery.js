@@ -7,9 +7,8 @@ export const DogGallery = () => {
     try {
       const results = await fetch("https://dog.ceo/api/breeds/image/random");
       const dogPhoto = await results.json();
-      console.log(dogPhoto);
+
       setDogPhotos((prevArray) => [...prevArray, dogPhoto.message]);
-      console.log(dogPhotos);
     } catch (error) {
       console.log(error.message);
     }

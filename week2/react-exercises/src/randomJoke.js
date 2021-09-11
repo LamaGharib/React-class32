@@ -22,7 +22,6 @@ export const RandomJoke = () => {
 };
 
 const Joke = ({ joke }) => {
-  console.log(joke);
   return (
     <div>
       <p>{joke.punchline}</p>

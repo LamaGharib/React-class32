@@ -1,8 +1,13 @@
 import React from "react";
-export const Form = ({ setCity, city, getCity }) => {
+export const Form = ({ setCity, city, getCity, setError }) => {
   const onSubmit = (e) => {
     e.preventDefault();
-    getCity(city);
+    if (city === "") {
+      setError(true);
+    } else {
+      getCity(city);
+      setError(false);
+    }
   };
   return (
     <form onSubmit={onSubmit}>

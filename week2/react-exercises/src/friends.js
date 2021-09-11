@@ -7,7 +7,7 @@ export const Friends = () => {
     try {
       const results = await fetch("https://www.randomuser.me/api?results=1");
       const friend = await results.json();
-      setFriend(friend);
+      setFriend(friend.results[0]);
     } catch (error) {
       console.log(error.message);
     }
@@ -22,16 +22,20 @@ export const Friends = () => {
 };
 
 const FriendProfile = ({ ...friend }) => {
-  const data = friend.results[0];
-  console.log(data);
+  const data = friend;
 
   return (
     <div>
       <ul>
-        <li>{` Name: ${data.name.first} ${data.name.last}`}</li>
-        <li>{`Location: ${data.location.country} ${data.location.city}`}</li>
-        <li>{`Phone: ${data.phone},
-         E-mail: ${data.email} `}</li>
+        <li>
+          Name: {data.name.first} {data.name.last}
+        </li>
+        <li>
+          Location: {data.location.country} {data.location.city}
+        </li>
+        <li>
+          Phone: {data.phone}, E-mail: {data.email}
+        </li>
       </ul>
     </div>
   );
